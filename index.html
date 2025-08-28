@@ -1,22 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matilda Stokes</title>
-  <meta name="description" content="Matilda Stokes" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <meta name="description" content="Musician & Computer Scientist — Bristol/London">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Background art (pure CSS). To use your own image, see style.css “bg-art::after”. -->
+  <div class="bg-art" aria-hidden="true"></div>
+
   <a class="skip" href="#content">Skip to content</a>
+
   <header>
     <nav>
-      <a class="brand" href="/">Matilda Stokes
-      </a>
-      <div style="display:flex; gap:.75rem;">
+      <a class="brand" href="/">Matilda Stokes</a>
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#work">Work</a>
         <a href="#contact">Contact</a>
@@ -26,60 +28,112 @@
 
   <main id="content">
     <section class="hero">
-      <div>
-        <h1>Hello, I'm Matilda, a musician and computer scientist based in Bristol and London.</h1>
-        <p>I compose and produce electronic music and I build electronic instruments.</p>
-        <p><a class="btn" href="#work">Notable Projects →</a></p>
+      <div class="hero-copy">
+        <p class="kicker">Report — 2025</p>
+        <h1>Hello! I'm Matilda, a Musician and Computer Scientist based in Bristol and London.</h1>
+        <p class="lede">I compose and produce electronic music and I build electronic instruments.</p>
+        <p><a class="btn" href="#work">My work →</a></p>
       </div>
-      <div class="card">
-        <h2 style="margin-top:0;">Introductory Snipper -></h2>
-        <audio controls style="width:100%;">
-          <source src="media/Introductory-work.wav" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-        <p class="muted">Drop an MP3 in <code>/media/sample.mp3</code>.</p>
-      </div>
+
+      <aside class="card now-playing">
+        <h2>Now playing</h2>
+        <audio id="player" controls style="width:100%"></audio>
+        <ul id="playlist" class="playlist">
+          <!-- Put your files in /media and update titles -->
+          <li data-src="media/track1.mp3" class="active">Track One</li>
+          <li data-src="media/track2.mp3">Track Two</li>
+        </ul>
+        <p class="muted">Drop MP3s in <code>/media/</code>. Click a title to load.</p>
+      </aside>
     </section>
 
     <section id="work">
-      <h2>Projects</h2>
-      <div class="grid">
-        <article class="card"><h3>Project One</h3><p>One-line description.</p></article>
-        <article class="card"><h3>Project Two</h3><p>One-line description.</p></article>
-        <article class="card"><h3>Project Three</h3><p>One-line description.</p></article>
+      <p class="kicker">Projects</p>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="work-grid reveal">
+        <!-- Replace img src with your uploads in /img -->
+        <a class="work-card" href="#">
+          <img src="img/abstract-1.jpg" alt="Abstract gradient study">
+          <div class="meta">
+            <span class="kicker">Sound design</span>
+            <h3>Gradient Study</h3>
+          </div>
+        </a>
+        <a class="work-card" href="#">
+          <img src="img/line-forms.jpg" alt="Generative line forms">
+          <div class="meta">
+            <span class="kicker">Generative</span>
+            <h3>Line Forms</h3>
+          </div>
+        </a>
+        <a class="work-card" href="#">
+          <img src="img/poster-green.jpg" alt="Typographic poster">
+          <div class="meta">
+            <span class="kicker">Poster</span>
+            <h3>Hot Cinema</h3>
+          </div>
+        </a>
       </div>
     </section>
 
     <section id="about">
-      <h2>About</h2>
-      <p>I undertook a BA in music at the University of Bristol and pivoted to an MSc in Computer Science. I'm extremely passionate about electronic music and jazz, and constantly seek ways to combine the two. I've worked on various projects, trying to be as experimental as I can be. </p>
+      <p class="kicker">About</p>
+      <h2 class="section-title">Bio</h2>
+      <p>I undertook a BA in Music at the University of Bristol and pivoted to an MSc in Computer Science. I’m passionate about electronic music and jazz, and I build experimental instruments that blur software and hardware.</p>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <ul>
-        <li>Email: <a href="mailto:matildarosevin@gmail.com">matildarosevin@gmail.com</a></li>
+      <p class="kicker">Contact</p>
+      <h2 class="section-title">Say hello</h2>
+      <ul class="social">
+        <li>
+          <a href="mailto:matildarosevin@gmail.com" class="social-icon" aria-label="Email">
+            <!-- envelope -->
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
+          </a>
+        </li>
         <li>
           <a href="https://www.instagram.com/matildarosevin/" target="_blank" class="social-icon" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- outline instagram -->
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              <circle cx="17.5" cy="6.5" r="0.5"></circle>
             </svg>
           </a>
         </li>
-        
-        <li>Soundcloud: <a href="https://www.instagram.com/matildarosevin/">link</a></li>
+        <li>
+          <a href="#" class="social-icon" aria-label="GitHub">
+            <!-- github -->
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-6 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 3.77 5.44 5.44 0 0 0 3.5 8c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        </li>
       </ul>
     </section>
   </main>
 
-  <footer>
-    © <span id="y"></span> Your Name
-  </footer>
+  <footer>© <span id="y"></span> Matilda Stokes</footer>
 
   <script>
+    // year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // playlist
+    const player = document.getElementById('player');
+    const tracks = [...document.querySelectorAll('#playlist li')];
+    function load(src){ player.src = src; player.play(); }
+    tracks.forEach(li => li.addEventListener('click', () => {
+      tracks.forEach(t => t.classList.remove('active'));
+      li.classList.add('active');
+      load(li.dataset.src);
+    }));
+    if(tracks[0]) load(tracks[0].dataset.src);
+
+    // simple reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+    }, {threshold: 0.08});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 </html>
