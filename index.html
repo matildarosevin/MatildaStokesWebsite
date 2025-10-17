@@ -4,22 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matilda Stokes</title>
-  <meta name="description" content="Musician & Computer Scientist — Bristol/London">
+  <meta name="description" content="Musician & Computer Scientist – Bristol/London">
   <meta name="theme-color" content="#000000">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background art (pure CSS). To use your own image, see style.css “bg-art::after”. -->
   <div class="bg-art" aria-hidden="true"></div>
 
   <a class="skip" href="#content">Skip to content</a>
 
   <header>
     <nav>
-      <a class="brand" href="/">Matilda Stokes</a>
+      <a class="brand glitch-text" href="/">Matilda Stokes</a>
       <div class="nav-links">
-        <a href="#about">About</a>
+        <a href="about.html">About</a>
         <a href="#work">Work</a>
         <a href="#contact">Contact</a>
       </div>
@@ -29,7 +28,7 @@
   <main id="content">
     <section class="hero">
       <div class="hero-copy">
-        <p class="kicker">Report — 2025</p>
+        <p class="kicker">Report – 2025</p>
         <h1>Hello! I'm Matilda, a Musician and Computer Scientist based in Bristol and London.</h1>
         <p class="lede">I compose and produce electronic music and I build electronic instruments.</p>
         <p><a class="btn" href="#work">My work →</a></p>
@@ -39,9 +38,10 @@
         <h2>Now playing</h2>
         <audio id="player" controls style="width:100%"></audio>
         <ul id="playlist" class="playlist">
-          <!-- Put your files in /media and update titles -->
-          <li data-src="media/Introductory-work.wav" class="active">Sound Transformation from Sabbia</li>
-          <li data-src="media/introductory-work-2.wav">Tape Experimentation</li>
+          <!-- TODO: Update these with your actual audio files -->
+          <li data-src="media/Introductory-work.mp3" class="active">Sound Transformation from Sabbia</li>
+          <li data-src="media/introductory-work-2.mp3">Tape Experimentation</li>
+          <!-- TODO: Add more tracks here -->
         </ul>
       </aside>
     </section>
@@ -50,35 +50,45 @@
       <p class="kicker">Projects</p>
       <h2 class="section-title">Selected Work</h2>
       <div class="work-grid reveal">
-        <!-- Replace img src with your uploads in /img -->
-        <a class="work-card" href="#">
-          <img src="img/abstract-1.jpg" alt="Sabbia Visual">
+        
+        <a class="work-card glitch-img" href="granular-synth.html">
+          <!-- TODO: Replace with actual image of your ceramic granular synthesiser -->
+          <img src="img/abstract-1.jpg" alt="Ceramic Granular Synthesiser">
+          <div class="meta">
+            <span class="kicker">Hardware Build</span>
+            <h3>Ceramic Granular Synthesiser</h3>
+            <p class="card-desc">Sustainable tactile instrument exploring granular synthesis through ceramic interaction</p>
+          </div>
+        </a>
+
+        <a class="work-card glitch-img" href="extended-composition.html">
+          <!-- TODO: Replace with image related to your extended composition -->
+          <img src="img/line-forms.jpg" alt="Extended Composition Visual">
           <div class="meta">
             <span class="kicker">Sound Design</span>
             <h3>Video Game Extended Composition</h3>
+            <p class="card-desc">Experimental soundscapes for interactive media</p>
           </div>
         </a>
-        <a class="work-card" href="#">
-          <img src="img/line-forms.jpg" alt="Generative line forms">
+
+        <a class="work-card glitch-img" href="soundcloud-works.html">
+          <!-- TODO: Replace with image for SoundCloud works -->
+          <img src="img/poster-green.jpg" alt="SoundCloud Releases">
           <div class="meta">
-            <span class="kicker">Hardware Builds</span>
-            <h3>Granular Synthesiser</h3>
+            <span class="kicker">Releases</span>
+            <h3>SoundCloud Works</h3>
+            <p class="card-desc">Collection of experimental electronic compositions</p>
           </div>
         </a>
-        <a class="work-card" href="#">
-          <img src="img/poster-green.jpg" alt="Other Works">
-          <div class="meta">
-            <span class="kicker">Other Works</span>
-            <h3>Miscellaneous Songs</h3>
-          </div>
-        </a>
+
       </div>
     </section>
 
     <section id="about">
       <p class="kicker">About</p>
       <h2 class="section-title">Bio</h2>
-      <p>I undertook a BA in Music at the University of Bristol and pivoted to an MSc in Computer Science. I’m passionate about electronic music and jazz, and I build experimental instruments that blur software and hardware.</p>
+      <p>I undertook a BA in Music at the University of Bristol and pivoted to an MSc in Computer Science. I'm passionate about electronic music and jazz, and I build experimental instruments that blur software and hardware.</p>
+      <p><a href="about.html" class="btn">Read more →</a></p>
     </section>
 
     <section id="contact">
@@ -87,13 +97,11 @@
       <ul class="social">
         <li>
           <a href="mailto:matildarosevin@gmail.com" class="social-icon" aria-label="Email">
-            <!-- envelope -->
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/matildarosevin/" target="_blank" class="social-icon" aria-label="Instagram">
-            <!-- outline instagram -->
+          <a href="https://www.instagram.com/matildarosevin/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -102,8 +110,13 @@
           </a>
         </li>
         <li>
+          <a href="https://www.linkedin.com/in/matilda-stokes" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </li>
+        <li>
+          <!-- TODO: Add your GitHub URL here -->
           <a href="#" class="social-icon" aria-label="GitHub">
-            <!-- github -->
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-6 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 3.77 5.44 5.44 0 0 0 3.5 8c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
         </li>
@@ -114,10 +127,8 @@
   <footer>© <span id="y"></span> Matilda Stokes</footer>
 
   <script>
-    // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // playlist
     const player = document.getElementById('player');
     const tracks = [...document.querySelectorAll('#playlist li')];
     function load(src){ player.src = src; player.play(); }
@@ -128,7 +139,6 @@
     }));
     if(tracks[0]) load(tracks[0].dataset.src);
 
-    // simple reveal on scroll
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
     }, {threshold: 0.08});

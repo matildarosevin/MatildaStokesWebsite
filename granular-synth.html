@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ceramic Granular Synthesiser - Matilda Stokes</title>
+  <meta name="description" content="A sustainable ceramic granular synthesiser exploring tactile interaction and recyclability">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-art" aria-hidden="true"></div>
+
+  <header>
+    <nav>
+      <a class="brand glitch-text" href="/">Matilda Stokes</a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <div class="project-hero">
+      <p class="kicker">Hardware Build · MSc Dissertation Project</p>
+      <h1 class="glitch-text-hover">Ceramic Granular Synthesiser</h1>
+      <p class="lede">A sustainable, tactile instrument exploring granular synthesis through ceramic interaction. Built predominantly from recyclable materials to embody the concept of sonic fragmentation and recombination.</p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="project-image-hero">
+      <!-- TODO: Replace with your main ceramic synth photo -->
+      <img src="img/abstract-1.jpg" alt="Ceramic Granular Synthesiser" class="glitch-img">
+    </div>
+
+    <!-- Overview Section -->
+    <section class="project-section">
+      <h2>Overview</h2>
+      <p>This project explores the intersection of sustainable material practice and experimental sound design. The granular synthesiser is built predominantly from ceramics and other sustainable materials, replacing conventional plastic structures with a materially-conscious alternative.</p>
+      
+      <p>Granular synthesis—the process of fracturing sound into smaller "grains" to create entirely new sonic textures—reflects the nature of recyclability: capturing something old and repurposing it to make something new. This work embodies these ideas in the physical instrument itself.</p>
+      
+      <div class="specs-grid">
+        <div class="spec-item card">
+          <h3>Material</h3>
+          <p>Earthenware clay with copper tape sensors</p>
+        </div>
+        <div class="spec-item card">
+          <h3>Platform</h3>
+          <p>Daisy Seed / Daisy Pod</p>
+        </div>
+        <div class="spec-item card">
+          <h3>Audio Quality</h3>
+          <p>24-bit, 96kHz stereo output</p>
+        </div>
+        <div class="spec-item card">
+          <h3>Interaction</h3>
+          <p>Capacitive touch sensors, sliders, tactile ceramic surfaces</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio Demos -->
+    <section class="project-section">
+      <h2>Audio Demonstrations</h2>
+      <div class="audio-grid">
+        <!-- TODO: Add your 6 audio files here -->
+        <div class="audio-item card">
+          <h3>Demo 1</h3>
+          <audio controls>
+            <source src="media/granular-demo-1.mp3" type="audio/mpeg">
+          </audio>
+          <p class="audio-desc"><!-- TODO: Add description of this demo --></p>
+        </div>
+        
+        <div class="audio-item card">
+          <h3>Demo 2</h3>
+          <audio controls>
+            <source src="media/granular-demo-2.mp3" type="audio/mpeg">
+          </audio>
+          <p class="audio-desc"><!-- TODO: Add description of this demo --></p>
+        </div>
+
+        <div class="audio-item card">
+          <h3>Demo 3</h3>
+          <audio controls>
+            <source src="media/granular-demo-3.mp3" type="audio/mpeg">
+          </audio>
+          <p class="audio-desc"><!-- TODO: Add description of this demo --></p>
+        </div>
+
+        <div class="audio-item card">
+          <h3>Demo 4</h3>
+          <audio controls>
+            <source src="media/granular-demo-4.mp3" type="audio/mpeg">
+          </audio>
+          <p class="audio-desc"><!-- TODO: Add description of this demo --></p>
+        </div>
+
+        <div class="audio-item card">
+          <h3>Demo 5</h3>
+          <audio controls>
+            <source src="media/granular-demo-5.mp3" type="audio/mpeg">
+          </audio>
+          <p class="audio-desc"><!-- TODO: Add description of this demo --></p>
+        </div>
+
+        <div class="audio-item card">
+          <h3>Demo 6</h3>
+          <audio controls>
+            <source src="media/granular-demo-6.mp3" type="audio/mpeg">
+          </audio>
+          <p class="audio-desc"><!-- TODO: Add description of this demo --></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="project-section">
+      <h2>Technical Implementation</h2>
+      
+      <h3>Hardware</h3>
+      <ul>
+        <li>Built on Daisy Pod platform (STM32H750 MCU, 24-bit/96kHz audio codec)</li>
+        <li>Custom ceramic interaction surfaces using earthenware clay</li>
+        <li>Capacitive touch sensors built from copper tape and solder</li>
+        <li>MPR121 capacitive touch breakout board for sensor integration</li>
+        <li>SD card system for sample loading and storage</li>
+      </ul>
+
+      <h3>Software</h3>
+      <ul>
+        <li>Real-time granular synthesis engine written in C++</li>
+        <li>Parameters: grain size, density, pitch, position, jitter, reverb</li>
+        <li>Multiple windowing functions (Hann, Gaussian, sine, triangular)</li>
+        <li>Paged parameter system for controlling multiple synthesis parameters</li>
+        <li>Live sample recording and playback capabilities</li>
+      </ul>
+
+      <h3>Sustainability Focus</h3>
+      <ul>
+        <li>Ceramic housing replaces conventional plastic enclosures</li>
+        <li>Clay is recyclable by simple re-hydration (no energy-intensive processes)</li>
+        <li>Earthenware chosen for durability and tactile engagement</li>
+        <li>Failed ceramic prototypes can be broken down and reused</li>
+      </ul>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="project-section">
+      <h2>Development Process</h2>
+      
+      <div class="photo-gallery">
+        <!-- TODO: Add your process photos - replace these placeholders -->
+        <div class="gallery-item">
+          <img src="img/abstract-1.jpg" alt="Ceramic prototype" class="glitch-img-subtle">
+          <p><!-- TODO: Add caption like "Early ceramic prototype with copper tape sensors" --></p>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="img/line-forms.jpg" alt="Sensor integration" class="glitch-img-subtle">
+          <p><!-- TODO: Add caption like "Soldering copper sensors to earthenware" --></p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="img/poster-green.jpg" alt="Final assembly" class="glitch-img-subtle">
+          <p><!-- TODO: Add caption like "Final sculptural form with embedded controls" --></p>
+        </div>
+
+        <!-- TODO: Add more photos as needed - just copy this structure -->
+        <!-- 
+        <div class="gallery-item">
+          <img src="img/your-photo.jpg" alt="Description" class="glitch-img-subtle">
+          <p>Your caption here</p>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- Research Context -->
+    <section class="project-section">
+      <h2>Research Background</h2>
+      <p>This work was completed as my MSc dissertation in Computer Science at the University of Bristol (September 2025). The research hypothesis was:</p>
+      
+      <blockquote>
+        "To create an enhanced musical experience when interacting with granular soundscapes, prioritising sustainable, tactile and material processes."
+      </blockquote>
+
+      <p>The project builds on theoretical work by Dennis Gabor (quantum acoustics, 1947), Iannis Xenakis (stochastic grain screens), and Curtis Roads (microsound time scales), while engaging with contemporary practices in sustainable electronics and tangible music interfaces.</p>
+
+      <p>The synthesiser was evaluated through think-aloud protocols and heuristic analysis with musicians and sound designers. Participants reported more deliberate, exploratory interactions with the ceramic surfaces compared to conventional plastic interfaces, validating the tactile and material focus of the work.</p>
+
+      <!-- TODO: Add link to full dissertation if you want to share it -->
+      <!-- <p><a href="files/dissertation.pdf" class="btn">Read full dissertation →</a></p> -->
+    </section>
+
+    <!-- Navigation -->
+    <section class="project-nav">
+      <a href="extended-composition.html" class="btn">Next project →</a>
+      <a href="/#work" class="btn-secondary">Back to all work</a>
+    </section>
+
+  </main>
+
+  <footer>© <span id="y"></span> Matilda Stokes</footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

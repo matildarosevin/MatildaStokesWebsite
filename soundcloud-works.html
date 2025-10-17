@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoundCloud Works - Matilda Stokes</title>
+  <meta name="description" content="Collection of experimental electronic compositions and releases">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-art" aria-hidden="true"></div>
+
+  <header>
+    <nav>
+      <a class="brand glitch-text" href="/">Matilda Stokes</a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <div class="project-hero">
+      <p class="kicker">Releases · Experimental Works</p>
+      <h1 class="glitch-text-hover">SoundCloud Works</h1>
+      <p class="lede">A collection of experimental electronic compositions exploring texture, improvisation, and sonic manipulation.</p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="project-image-hero">
+      <!-- TODO: Replace with relevant image -->
+      <img src="img/poster-green.jpg" alt="SoundCloud Works" class="glitch-img">
+    </div>
+
+    <!-- Track List -->
+    <section class="project-section">
+      <h2>Released Works</h2>
+      
+      <div class="track-list">
+        <!-- TODO: Add your SoundCloud tracks - you can use embedded players or audio elements -->
+        
+        <div class="track-item card">
+          <h3>Track Title 1</h3>
+          <!-- Option 1: HTML5 audio -->
+          <audio controls style="width:100%">
+            <source src="media/track-1.mp3" type="audio/mpeg">
+          </audio>
+          <!-- Option 2: SoundCloud embed (replace with your embed code) -->
+          <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=YOUR_TRACK_URL"></iframe> -->
+          <p class="track-desc"><!-- TODO: Add track description --></p>
+          <p class="track-meta">
+            <span class="kicker"><!-- TODO: Year/context --></span>
+          </p>
+        </div>
+
+        <div class="track-item card">
+          <h3>Track Title 2</h3>
+          <audio controls style="width:100%">
+            <source src="media/track-2.mp3" type="audio/mpeg">
+          </audio>
+          <p class="track-desc"><!-- TODO: Add track description --></p>
+          <p class="track-meta">
+            <span class="kicker"><!-- TODO: Year/context --></span>
+          </p>
+        </div>
+
+        <div class="track-item card">
+          <h3>Track Title 3</h3>
+          <audio controls style="width:100%">
+            <source src="media/track-3.mp3" type="audio/mpeg">
+          </audio>
+          <p class="track-desc"><!-- TODO: Add track description --></p>
+          <p class="track-meta">
+            <span class="kicker"><!-- TODO: Year/context --></span>
+          </p>
+        </div>
+
+        <div class="track-item card">
+          <h3>Track Title 4</h3>
+          <audio controls style="width:100%">
+            <source src="media/track-4.mp3" type="audio/mpeg">
+          </audio>
+          <p class="track-desc"><!-- TODO: Add track description --></p>
+          <p class="track-meta">
+            <span class="kicker"><!-- TODO: Year/context --></span>
+          </p>
+        </div>
+
+        <!-- TODO: Add more tracks as needed -->
+
+      </div>
+
+      <!-- Link to SoundCloud profile -->
+      <div style="margin-top: 2rem; text-align: center;">
+        <!-- TODO: Add your SoundCloud profile URL -->
+        <a href="#" target="_blank" rel="noopener" class="btn">View all on SoundCloud →</a>
+      </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="project-section">
+      <h2>About These Works</h2>
+      <!-- TODO: Add overview of your SoundCloud output -->
+      <p>Description of your approach to these compositions, themes explored, techniques used, and how these pieces relate to your broader practice in experimental electronic music.</p>
+    </section>
+
+    <!-- Navigation -->
+    <section class="project-nav">
+      <a href="granular-synth.html" class="btn">View Ceramic Granular Synth →</a>
+      <a href="/#work" class="btn-secondary">Back to all work</a>
+    </section>
+
+  </main>
+
+  <footer>© <span id="y"></span> Matilda Stokes</footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

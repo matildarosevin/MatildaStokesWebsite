@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Game Extended Composition - Matilda Stokes</title>
+  <meta name="description" content="Extended musical composition exploring sound design for interactive media">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-art" aria-hidden="true"></div>
+
+  <header>
+    <nav>
+      <a class="brand glitch-text" href="/">Matilda Stokes</a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="/#work">Work</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <div class="project-hero">
+      <p class="kicker">Sound Design · Extended Composition</p>
+      <h1 class="glitch-text-hover">Video Game Extended Composition</h1>
+      <p class="lede"><!-- TODO: Add your project description here --></p>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="project-image-hero">
+      <!-- TODO: Replace with image related to this project -->
+      <img src="img/line-forms.jpg" alt="Extended Composition Visual" class="glitch-img">
+    </div>
+
+    <!-- Overview Section -->
+    <section class="project-section">
+      <h2>About This Work</h2>
+      <!-- TODO: Add detailed description of your extended composition -->
+      <p>Lorem ipsum description of your composition approach, inspiration, and techniques used.</p>
+    </section>
+
+    <!-- Audio Player -->
+    <section class="project-section">
+      <h2>Listen</h2>
+      <div class="audio-featured card">
+        <audio controls style="width:100%">
+          <!-- TODO: Add your audio file -->
+          <source src="media/extended-composition.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-meta">
+          <p><strong>Duration:</strong> <!-- TODO: Add duration --></p>
+          <p><strong>Year:</strong> <!-- TODO: Add year --></p>
+          <p><strong>Context:</strong> <!-- TODO: Add context/commission info --></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process/Technical Details -->
+    <section class="project-section">
+      <h2>Technical Approach</h2>
+      <!-- TODO: Add details about your composition process -->
+      <ul>
+        <li>Software/tools used</li>
+        <li>Sound design techniques</li>
+        <li>Compositional structure</li>
+        <li>Recording/mixing process</li>
+      </ul>
+    </section>
+
+    <!-- Additional Media -->
+    <section class="project-section">
+      <h2>Visuals</h2>
+      <div class="photo-gallery">
+        <!-- TODO: Add relevant images -->
+        <div class="gallery-item">
+          <img src="img/line-forms.jpg" alt="Process image" class="glitch-img-subtle">
+          <p><!-- TODO: Caption --></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="project-nav">
+      <a href="soundcloud-works.html" class="btn">Next project →</a>
+      <a href="/#work" class="btn-secondary">Back to all work</a>
+    </section>
+
+  </main>
+
+  <footer>© <span id="y"></span> Matilda Stokes</footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+# Matilda Stokes Portfolio Website
+
+## 📁 File Structure
+
+```
+/
+├── index.html                      # Homepage
+├── granular-synth.html            # Ceramic Granular Synthesiser project page
+├── extended-composition.html       # Extended composition project page
+├── soundcloud-works.html          # SoundCloud works collection
+├── about.html                     # Expanded bio page
+├── style.css                      # Styles with subtle glitch effects
+├── /img                           # Image folder
+│   ├── abstract-1.jpg
+│   ├── line-forms.jpg
+│   ├── poster-green.jpg
+│   └── [your other images]
+└── /media                         # Audio files folder
+    ├── Introductory-work.mp3
+    ├── introductory-work-2.mp3
+    └── [your other audio files]
+```
+
+## ✏️ What You Need To Add
+
+Search for `<!-- TODO:` in each HTML file. These comments mark everywhere you need to add your content. Here's a breakdown:
+
+### 🏠 index.html
+- Update audio files in the "Now playing" section
+- Replace placeholder images with your actual project photos
+- Add your GitHub URL
+
+### 🎛️ granular-synth.html
+- Main hero image of your ceramic synthesiser
+- 6 audio demo files (media/granular-demo-1.mp3 through 6)
+- Descriptions for each audio demo
+- Process/development photos
+- Optional: Link to your full dissertation PDF
+
+### 🎵 extended-composition.html
+- Project description and context
+- Main audio file
+- Duration, year, and context information
+- Technical details about your composition process
+- Relevant images
+
+### 🎧 soundcloud-works.html
+- Track titles and audio files
+- Track descriptions
+- Your SoundCloud profile URL
+- You can use either HTML5 audio players OR SoundCloud embed iframes
+
+### 👤 about.html
+- Professional headshot photo (img/matilda-photo.jpg)
+- Expanded bio text
+- Your BA graduation year
+- Studio/action photos
+- Additional details about your practice
+
+## 🎨 Design Features
+
+### Subtle Glitch Effects
+- **Text glitch**: Slight shake on hover (`.glitch-text`)
+- **Heading glitch**: RGB split effect that appears on hover (`.glitch-text-hover`)
+- **Image distortion**: Subtle contrast/position shift on hover (`.glitch-img`)
+- **Noise overlay**: Slight grain texture appears on cards when hovered
+
+### Color Scheme
+- Background: Deep black (#000)
+- Surface: Dark gray (#111)
+- Accent: Pink (#ff4081)
+- Secondary: Blue (#3b82f6)
+
+## 📝 Adding Content Examples
+
+### Adding a New Audio Track
+```html
+<li data-src="media/your-track-name.mp3">Track Title</li>
+```
+
+### Adding a Gallery Image
+```html
+<div class="gallery-item">
+  <img src="img/your-image.jpg" alt="Description" class="glitch-img-subtle">
+  <p>Caption for your image</p>
+</div>
+```
+
+### SoundCloud Embed (if you prefer)
+1. Get your track's embed code from SoundCloud
+2. Replace the HTML5 audio element with:
+```html
+<iframe width="100%" height="166" scrolling="no" frameborder="no" 
+  allow="autoplay" 
+  src="https://w.soundcloud.com/player/?url=YOUR_TRACK_URL">
+</iframe>
+```
+
+## 🚀 Deployment
+
+Since you're already using GitHub Pages:
+
+1. Replace the existing files in your repository
+2. Add your images to the `/img` folder
+3. Add your audio files to the `/media` folder
+4. Commit and push to GitHub
+5. Your site will automatically update at `https://matildarosevin.github.io/MatildaStokesWebsite`
+
+## 🖼️ Image Recommendations
+
+### Sizes for best performance:
+- Hero images: 1200-1600px wide
+- Gallery images: 800-1000px wide
+- Profile photo: 600px wide
+- Keep file sizes under 500KB when possible (use JPG at 80-85% quality)
+
+### What photos to include:
+- **Granular synth page**: Close-ups of ceramic surfaces, sensors, full instrument shots, detail shots, you interacting with it
+- **About page**: Professional headshot, studio shots, performance photos, ceramic work in progress
+- **Other projects**: Cover images, process shots, relevant visuals
+
+## 🔧 Customization
+
+### Changing Colors
+Edit the `:root` variables in `style.css`:
+```css
+:root{
+  --accent:#ff4081;   /* Change this for different accent color */
+  --accent2:#3b82f6;  /* Secondary accent */
+}
+```
+
+### Adjusting Glitch Intensity
+To make glitches more intense, find these sections in style.css and increase the values:
+- `.glitch-text:hover` - increase transform values
+- `.glitch-img-shift` - increase translate values
+- `.glitch-text-hover::after` - increase opacity and text-shadow values
+
+## 📱 Mobile Responsive
+The site is fully responsive and will work well on phones and tablets. No additional work needed!
+
+## ❓ Questions?
+All the placeholder content is clearly marked with `<!-- TODO: -->` comments. Just search for "TODO" in each file to find what needs updating.
