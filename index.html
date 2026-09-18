@@ -1,144 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matilda Stokes</title>
-  <meta name="description" content="Musician & Computer Scientist – Bristol/London">
-  <meta name="theme-color" content="#000000">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Matilda Stokes — Creative Technologist, Full Stack Developer, Musician & Computer Scientist – Bristol/London">
+    <meta name="theme-color" content="#000000">
+    <title>Matilda Stokes — Creative Technologist & Full Stack Developer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="bg-art" aria-hidden="true"></div>
-
-  <a class="skip" href="#content">Skip to content</a>
-
-  <header>
-    <nav>
-      <a class="brand glitch-text" href="index.html">Matilda Stokes</a>
-      <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Matilda Stokes</a>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main id="content">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="kicker">Report – 2025</p>
-        <h1>Hello! I'm Matilda, a Musician and Computer Scientist based in Bristol and London.</h1>
-        <p class="lede">I compose and produce electronic music and I build electronic instruments.</p>
-        <p><a class="btn" href="#work">My work →</a></p>
-      </div>
+    <main id="content" class="container">
+        <section class="hero">
+            <h1>Hello! I'm Matilda, a Creative Technologist based in Bristol and London.</h1>
+            <p class="hero-subtitle">Full Stack Developer • Electronic Music Producer • Experimental Instrument Builder</p>
+            <p class="hero-description">I build interactive web applications and explore the intersection of technology, music, and creative media. Currently preparing React, .NET, and TypeScript projects for my dream role at Aardman Studios.</p>
+        </section>
 
-      <aside class="card now-playing">
-        <h2>Now playing</h2>
-        <audio id="player" controls style="width:100%"></audio>
-        <ul id="playlist" class="playlist">
-          <li data-src="media/Introductory-work.wav" class="active">Sound Transformation from Sabbia</li>
-          <li data-src="media/introductory-work-2.wav">Tape Experimentation</li>
-          <!-- TODO: Add more tracks here -->
-        </ul>
-      </aside>
-    </section>
+        <section id="now-playing" class="now-playing">
+            <h2>Now Playing</h2>
+            <ul class="audio-list">
+                <li data-src="media/Introductory-work.mp3">Sound Transformation from Sabbia</li>
+                <li data-src="media/introductory-work-2.mp3">Tape Experimentation</li>
+            </ul>
+            <audio id="audio-player" controls style="width: 100%; margin-top: 1rem;"></audio>
+            <script>
+                const audioList = document.querySelectorAll('.audio-list li');
+                const audioPlayer = document.getElementById('audio-player');
+                audioList.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const src = this.getAttribute('data-src');
+                        audioPlayer.src = src;
+                        audioPlayer.play();
+                        audioList.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+            </script>
+        </section>
 
-    <section id="work">
-      <p class="kicker">Projects</p>
-      <h2 class="section-title">Selected Work</h2>
-      <div class="work-grid reveal">
-        
-        <a class="work-card glitch-img" href="granular-synth.html">
-          <!-- TODO: Replace with actual image of your ceramic granular synthesiser -->
-          <img src="media/Ceramic-Granular-Synthesiser-Front-Page.jpeg" alt="Ceramic Granular Synthesiser">
-          <div class="meta">
-            <span class="kicker">Hardware Build</span>
-            <h3>Ceramic Granular Synthesiser</h3>
-            <p class="card-desc">Sustainable tactile instrument exploring granular synthesis through ceramic interaction</p>
-          </div>
-        </a>
+        <section id="work" class="projects">
+            <h2>Selected Work</h2>
+            
+            <div class="work-section">
+                <h3>Web & Full Stack Development</h3>
+                <p class="section-intro">Interactive projects built with React, TypeScript, and .NET</p>
+                
+                <div class="project-grid">
+                    <article class="project-card">
+                        <h4>Character Creator</h4>
+                        <p class="project-type">React + TypeScript</p>
+                        <p>Interactive stop motion character builder with real-time preview. Demonstrates React component architecture, state management, and creative tools development.</p>
+                        <a href="https://github.com/matildarosevin/character-creator" class="project-link" target="_blank">View on GitHub →</a>
+                    </article>
 
-        <a class="work-card glitch-img" href="extended-composition.html">
-          <img src="media/Extended-Composition-Front-Page.jpeg" alt="Extended Composition Visual">
-          <div class="meta">
-            <span class="kicker">Sound Design</span>
-            <h3>Video Game Extended Composition</h3>
-            <p class="card-desc">Experimental soundscapes for interactive media</p>
-          </div>
-        </a>
+                    <article class="project-card">
+                        <h4>Full Stack Project</h4>
+                        <p class="project-type">React + .NET</p>
+                        <p>End-to-end full stack application showcasing React frontend with .NET backend, API integration, and database management.</p>
+                        <a href="https://github.com/matildarosevin" class="project-link" target="_blank">View on GitHub →</a>
+                    </article>
 
-        <a class="work-card glitch-img" href="soundcloud-works.html">
-          <img src="media/Soundcloud-Front-Page.jpeg" alt="SoundCloud Releases">
-          <div class="meta">
-            <span class="kicker">Releases</span>
-            <h3>SoundCloud Works</h3>
-            <p class="card-desc">Collection of experimental electronic compositions</p>
-          </div>
-        </a>
+                    <article class="project-card">
+                        <h4>Learning Projects</h4>
+                        <p class="project-type">React + TypeScript</p>
+                        <p>Foundational web development projects including components, hooks, state management, and async patterns. Demonstrating steady skill growth.</p>
+                        <a href="https://github.com/matildarosevin" class="project-link" target="_blank">View on GitHub →</a>
+                    </article>
+                </div>
+            </div>
 
-      </div>
-    </section>
+            <div class="work-section">
+                <h3>Creative & Music Projects</h3>
+                <p class="section-intro">Electronic instruments, experimental compositions, and audio design</p>
+                
+                <div class="project-grid">
+                    <article class="project-card">
+                        <h4>Ceramic Granular Synthesiser</h4>
+                        <p class="project-type">Hardware & Software</p>
+                        <p>Sustainable tactile instrument exploring granular synthesis through ceramic interaction. Custom hardware build with embedded electronics and real-time audio processing.</p>
+                        <a href="granular-synth.html" class="project-link">Explore →</a>
+                    </article>
 
-    <section id="about">
-      <p class="kicker">About</p>
-      <h2 class="section-title">Bio</h2>
-      <p>I undertook a BA in Music at the University of Bristol and pivoted to an MSc in Computer Science. I'm passionate about electronic music and jazz, and I build experimental instruments that blur software and hardware.</p>
-      <p><a href="about.html" class="btn">Read more →</a></p>
-    </section>
+                    <article class="project-card">
+                        <h4>Extended Composition</h4>
+                        <p class="project-type">Visual Sound Design</p>
+                        <p>Experimental soundscapes for interactive media. Audio design and composition for video game environments and interactive installations.</p>
+                        <a href="extended-composition.html" class="project-link">Explore →</a>
+                    </article>
 
-    <section id="contact">
-      <p class="kicker">Contact</p>
-      <h2 class="section-title">Say hello</h2>
-      <ul class="social">
-        <li>
-          <a href="mailto:matildarosevin@gmail.com" class="social-icon" aria-label="Email">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/matildarosevin/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <circle cx="17.5" cy="6.5" r="0.5"></circle>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/matilda-stokes" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/matildarosevin" class="social-icon" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-6 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 3.77 5.44 5.44 0 0 0 3.5 8c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          </a>
-        </li>
-      </ul>
-    </section>
-  </main>
+                    <article class="project-card">
+                        <h4>SoundCloud Works</h4>
+                        <p class="project-type">Releases</p>
+                        <p>Collection of experimental electronic compositions exploring synthesis techniques, field recording, and sonic exploration.</p>
+                        <a href="soundcloud-works.html" class="project-link">Explore →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-  <footer>© <span id="y"></span> Matilda Stokes</footer>
+        <section id="about" class="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a creative technologist bridging art, music, and software engineering. I hold a BA in Music from the University of Bristol and an MSc in Computer Science, combining artistic vision with technical rigor.</p>
+                    
+                    <p>My practice spans electronic music production, full stack web development, and experimental instrument design. I'm passionate about creating interactive experiences that challenge how we think about creativity and technology.</p>
+                    
+                    <p>Currently focused on React, TypeScript, and .NET development. I'm fascinated by how code can enable new forms of artistic expression—whether through interactive web tools, algorithmic composition, or custom hardware.</p>
+                    
+                    <p><strong>I'm preparing for my dream role as a Full Stack Developer at Aardman Studios, where I hope to bring my unique blend of creative and technical skills to their groundbreaking animation and interactive projects.</strong></p>
+                </div>
+                <div class="about-info">
+                    <p><strong>Skills:</strong> React, TypeScript, .NET, C#, JavaScript, Music Production, Hardware Design, Audio Programming</p>
+                    <p><strong>Education:</strong> MSc Computer Science (University of Bristol), BA Music (University of Bristol)</p>
+                </div>
+            </div>
+            <a href="about.html" class="read-more">Read full bio →</a>
+        </section>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+        <section id="contact" class="contact">
+            <h2>Get in Touch</h2>
+            <p>Interested in collaboration, projects, or just want to chat? Feel free to reach out.</p>
+            <div class="contact-links">
+                <a href="mailto:matildarosevin@gmail.com" class="contact-link">Email</a>
+                <a href="https://github.com/matildarosevin" class="contact-link" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/matilda-stokes" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="https://www.instagram.com/matildarosevin/" class="contact-link" target="_blank">Instagram</a>
+            </div>
+        </section>
+    </main>
 
-    const player = document.getElementById('player');
-    const tracks = [...document.querySelectorAll('#playlist li')];
-    function load(src){ player.src = src; player.play(); }
-    tracks.forEach(li => li.addEventListener('click', () => {
-      tracks.forEach(t => t.classList.remove('active'));
-      li.classList.add('active');
-      load(li.dataset.src);
-    }));
-    if(tracks[0]) load(tracks[0].dataset.src);
-
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-    }, {threshold: 0.08});
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
+    <footer class="footer">
+        <p>© Matilda Stokes 2026 • <a href="https://github.com/matildarosevin" target="_blank">GitHub</a></p>
+    </footer>
 </body>
 </html>
