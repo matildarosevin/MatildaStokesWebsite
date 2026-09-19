@@ -144,8 +144,16 @@ body{ font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.6; }
 header{ position:sticky; top:0; background:rgba(17,17,17,.9); backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid var(--border); z-index:100; }
 nav{ max-width:1060px; margin:0 auto; padding:.85rem 1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
 .brand{ color:var(--text); text-decoration:none; font-weight:500; letter-spacing:.02em; }
-.nav-links a{ color:var(--text); opacity:.9; text-decoration:none; margin-left:1rem; transition: color 0.2s ease; }
+.nav-links { display: flex; flex-direction: row; gap: 2rem; align-items: center;
+}
+.nav-links a{ display: flex; flex-direction: row; gap: 2em; align-items: centre; color:var(--text); opacity:.9; text-decoration:none; margin-left:1rem; transition: color 0.2s ease; }
 .nav-links a:hover{ color:var(--accent); }
+.nav-dropdown {position: relative; display: inline-flex; align-items:}
+.dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; margin-top: 0.5rem; min-width: 180px; z-index: 100;}
+.dropdown-menu.active { display : block;}
+.dropdown-menu a { display: block; padding: 0.75rem 1rem; color: var(--text); text-decoration: none; transition: color 0.3s ease;
+}
+.dropdown-menu a:hover {color: var(--acent);}
 
 /* ===== Main ===== */
 main{ max-width:1060px; margin:2rem auto; padding:0 1rem; }

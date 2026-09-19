@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Development - Matilda Stokes</title>
+  <meta name="description" content="Web Development & Full Stack Projects">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="bg-art" aria-hidden="true"></div>
+
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header>
+    <nav>
+      <a class="brand glitch-text" href="index.html">Matilda Stokes</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" onclick="document.querySelector('.dropdown-menu').classList.toggle('active'); return false;">Projects</a>
+          <div class="dropdown-menu">
+            <a href="web-dev.html">Web Development</a>
+            <a href="creative-music.html">Creative & Music</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section>
+      <p class="kicker">Projects</p>
+      <h2 class="section-title">Web Development</h2>
+      <p style="color: var(--muted); margin-bottom: 2rem;">Full Stack & Interactive Projects</p>
+      
+      <div class="work-grid reveal">
+        
+        <a class="work-card glitch-img" href="stop-motion-tracker.html">
+          <img src="media/placeholder-web-1.jpeg" alt="Stop Motion Tracker">
+          <div class="meta">
+            <span class="kicker">Full Stack</span>
+            <h3>Stop-Motion Tracker</h3>
+            <p class="card-desc">React + TypeScript + .NET application for managing stop motion film production</p>
+          </div>
+        </a>
+
+        <a class="work-card glitch-img" href="character-creator.html">
+          <img src="media/placeholder-web-2.jpeg" alt="Character Creator">
+          <div class="meta">
+            <span class="kicker">React</span>
+            <h3>Character Creator</h3>
+            <p class="card-desc">Interactive character design tool built with React and TypeScript</p>
+          </div>
+        </a>
+
+        <a class="work-card glitch-img" href="in-process.html">
+          <img src="media/placeholder-web-3.jpeg" alt="In Progress">
+          <div class="meta">
+            <span class="kicker">Coming Soon</span>
+            <h3>In Progress</h3>
+            <p class="card-desc">Audio Signal Processing Tool • Glitch Art Generator • Video Game</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+      <p style="text-align: center; color: var(--muted);"><a href="index.html" style="color: var(--accent); text-decoration: none;">← Back to Home</a></p>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Matilda Stokes</footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+    }, {threshold: 0.08});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
