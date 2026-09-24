@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stop-Motion Tracker - Matilda Stokes</title>
+  <meta name="description" content="A full-stack web app for tracking every shot in a stop-motion production, built with React, TypeScript and ASP.NET Core">
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Page-specific styles (can be moved into style.css if you prefer) -->
+  <style>
+    /* Stage colours, drawn from the background palette */
+    .smt { --s0:#6b6b6b; --s1:#8b5cf6; --s2:#3b82f6; --s3:#f59e0b; --s4:#ff4081; --s5:#22c55e; }
+
+    /* ---- Shot table preview ---- */
+    .smt-app { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin:2rem 0; }
+    .smt-app-bar { display:flex; align-items:center; gap:.4rem; padding:.7rem 1rem; border-bottom:1px solid var(--border); }
+    .smt-app-bar span { width:10px; height:10px; border-radius:50%; background:var(--border); }
+    .smt-app-bar p { margin:0 0 0 .6rem; font:400 12px/1 "IBM Plex Mono", monospace; color:var(--muted); }
+    .smt-table-wrap { overflow-x:auto; }
+    .smt-table { width:100%; border-collapse:collapse; font-size:.95rem; min-width:460px; }
+    .smt-table th { text-align:left; font:400 12px/1 "IBM Plex Mono", monospace; color:var(--muted); padding:.9rem 1rem; }
+    .smt-table td { padding:.75rem 1rem; border-top:1px solid var(--border); }
+    .smt-table td.num { font-family:"IBM Plex Mono", monospace; color:var(--muted); }
+    .smt-badge { display:inline-block; padding:.2rem .65rem; border-radius:999px; font-size:.8rem; border:1px solid currentColor; }
+    .smt-caption { margin:.6rem 0 0; font-size:.9rem; color:var(--muted); text-align:center; }
+
+    /* ---- Film strip pipeline ---- */
+    .smt-strip-wrap { overflow-x:auto; margin:2rem 0 1rem; }
+    .smt-strip {
+      display:grid; grid-template-columns:repeat(6, minmax(110px, 1fr)); gap:10px;
+      padding:22px 12px; background:#0a0a0a; border-radius:6px; min-width:700px; position:relative;
+    }
+    /* Sprocket holes along top and bottom */
+    .smt-strip::before, .smt-strip::after {
+      content:""; position:absolute; left:8px; right:8px; height:8px;
+      background:repeating-linear-gradient(90deg, #2a2a2a 0 12px, transparent 12px 24px);
+      border-radius:2px;
+    }
+    .smt-strip::before { top:7px; }
+    .smt-strip::after { bottom:7px; }
+    .smt-frame {
+      aspect-ratio:4/3; border-radius:4px; border:1px solid #222; background:#141414;
+      display:flex; flex-direction:column; justify-content:flex-end; padding:.7rem;
+      color:#555; transition:background .4s ease, border-color .4s ease, color .4s ease;
+    }
+    .smt-frame b { font:400 11px/1 "IBM Plex Mono", monospace; opacity:.8; }
+    .smt-frame span { font-size:1rem; line-height:1.2; margin-top:.3rem; }
+    .smt-strip.lit .smt-frame { color:var(--text); border-color:var(--c); background:color-mix(in srgb, var(--c) 22%, #141414); }
+    .smt-strip.lit .smt-frame b { color:var(--c); opacity:1; }
+    .smt-strip.lit .smt-frame:nth-child(1){ transition-delay:0s; }
+    .smt-strip.lit .smt-frame:nth-child(2){ transition-delay:.15s; }
+    .smt-strip.lit .smt-frame:nth-child(3){ transition-delay:.3s; }
+    .smt-strip.lit .smt-frame:nth-child(4){ transition-delay:.45s; }
+    .smt-strip.lit .smt-frame:nth-child(5){ transition-delay:.6s; }
+    .smt-strip.lit .smt-frame:nth-child(6){ transition-delay:.75s; }
+
+    /* ---- Request flow ---- */
+    .smt-flow { display:flex; flex-wrap:wrap; align-items:stretch; gap:.5rem; margin:1.5rem 0; }
+    .smt-node { flex:1 1 120px; padding:.85rem 1rem; }
+    .smt-node small { display:block; font:400 11px/1.3 "IBM Plex Mono", monospace; color:var(--muted); margin-bottom:.35rem; }
+    .smt-node strong { font-weight:500; }
+    .smt-arrow { align-self:center; color:var(--accent); font-size:1.2rem; }
+
+    /* ---- Problem / fix cards ---- */
+    .smt-fixes { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:1rem; margin:1.5rem 0; }
+    .smt-fix { padding:1.25rem; }
+    .smt-fix p { margin:0; }
+    .smt-fix .problem { color:var(--muted); font-size:.95rem; padding-bottom:.75rem; margin-bottom:.75rem; border-bottom:1px dashed var(--border); }
+    .smt-fix .fix { font-size:.95rem; }
+    .smt-fix .fix::before { content:"Fix: "; color:var(--accent); }
+
+    @media (max-width: 640px) {
+      .smt-arrow { transform:rotate(90deg); width:100%; text-align:center; }
+      .smt-node { flex-basis:100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .smt-frame { transition:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-art" aria-hidden="true"></div>
+
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header>
+    <nav>
+      <a class="brand glitch-text" href="index.html">Matilda Stokes</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" onclick="document.querySelector('.dropdown-menu').classList.toggle('active'); return false;">Projects</a>
+          <div class="dropdown-menu">
+            <a href="web-dev.html">Web Development</a>
+            <a href="creative-projects.html">Creative & Music</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="project-page smt" id="content">
+    <div class="project-hero">
+      <p class="kicker">Full Stack · Portfolio Project</p>
+      <h1 class="glitch-text-hover">Stop-Motion Tracker</h1>
+      <p class="lede">A full-stack web app for tracking every shot in a stop-motion production, from set build through to sound design.</p>
+      <p><a href="https://github.com/matildarosevin/stop-motion-tracker" target="_blank" rel="noopener" class="btn">View the code on GitHub →</a></p>
+    </div>
+
+    <!-- Shot table preview (swap for a real screenshot in a .project-image-hero block if you like) -->
+    <figure style="margin:0;">
+      <div class="smt-app">
+        <div class="smt-app-bar" aria-hidden="true"><span></span><span></span><span></span><p>localhost:5173</p></div>
+        <div class="smt-table-wrap">
+          <table class="smt-table">
+            <thead>
+              <tr><th>Scene</th><th>Shot</th><th>Status</th><th>Frames</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">01</td><td class="num">01</td><td><span class="smt-badge" style="color:var(--s5)">Done</span></td><td class="num">288</td></tr>
+              <tr><td class="num">01</td><td class="num">02</td><td><span class="smt-badge" style="color:var(--s4)">Sound Design</span></td><td class="num">192</td></tr>
+              <tr><td class="num">02</td><td class="num">01</td><td><span class="smt-badge" style="color:var(--s2)">Shooting</span></td><td class="num">96</td></tr>
+              <tr><td class="num">02</td><td class="num">02</td><td><span class="smt-badge" style="color:var(--s1)">Set Build</span></td><td class="num">0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figcaption class="smt-caption">Example shots in the tracker, sorted by scene and shot number</figcaption>
+    </figure>
+
+    <section class="project-section">
+      <h2>Every Shot, Frame by Frame</h2>
+      <p>Rather than build another to-do app, I modelled a real production workflow. Each shot moves through six stages:</p>
+      <div class="smt-strip-wrap">
+        <div class="smt-strip" id="strip">
+          <div class="smt-frame" style="--c:var(--s0)"><b>01</b><span>Not Started</span></div>
+          <div class="smt-frame" style="--c:var(--s1)"><b>02</b><span>Set Build</span></div>
+          <div class="smt-frame" style="--c:var(--s2)"><b>03</b><span>Shooting</span></div>
+          <div class="smt-frame" style="--c:var(--s3)"><b>04</b><span>Editing</span></div>
+          <div class="smt-frame" style="--c:var(--s4)"><b>05</b><span>Sound Design</span></div>
+          <div class="smt-frame" style="--c:var(--s5)"><b>06</b><span>Done</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>How It Fits Together</h2>
+      <p>A request travels from the React UI through a typed fetch layer to a REST API, then down to the database.</p>
+      <div class="smt-flow">
+        <div class="smt-node card"><small>Frontend</small><strong>React 19 + Vite</strong></div>
+        <div class="smt-arrow" aria-hidden="true">→</div>
+        <div class="smt-node card"><small>api.ts</small><strong>TypeScript</strong></div>
+        <div class="smt-arrow" aria-hidden="true">→</div>
+        <div class="smt-node card"><small>/api/shots</small><strong>ASP.NET Core 8</strong></div>
+        <div class="smt-arrow" aria-hidden="true">→</div>
+        <div class="smt-node card"><small>ORM</small><strong>EF Core</strong></div>
+        <div class="smt-arrow" aria-hidden="true">→</div>
+        <div class="smt-node card"><small>Database</small><strong>SQLite</strong></div>
+      </div>
+      <p>The TypeScript <code>Shot</code> interface mirrors the C# model exactly, so mismatches between frontend and backend are caught at compile time.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Challenges</h2>
+      <div class="smt-fixes">
+        <div class="smt-fix card">
+          <p class="problem">SQL Server needed Docker and extra setup on my M1 Mac.</p>
+          <p class="fix">Switched to SQLite, an almost one-line change thanks to EF Core.</p>
+        </div>
+        <div class="smt-fix card">
+          <p class="problem">The browser blocked requests from the React dev server to the API.</p>
+          <p class="fix">Added a CORS policy for the Vite dev server.</p>
+        </div>
+        <div class="smt-fix card">
+          <p class="problem">Shot statuses sent as strings failed validation, as .NET expects enums as numbers.</p>
+          <p class="fix">Registered <code>JsonStringEnumConverter</code> on the API.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Next Steps</h2>
+      <p>Drag-and-drop status updates, filtering by scene or animator, real-time team updates, authentication and deployment.</p>
+
+      <div style="margin-top: 2rem; text-align: center;">
+        <a href="https://github.com/matildarosevin/stop-motion-tracker" target="_blank" rel="noopener" class="btn">View the repo on GitHub →</a>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="project-nav">
+      <a href="character-creator.html" class="btn">View Character Creator →</a>
+      <a href="web-dev.html" class="btn-secondary">Back to Web Development</a>
+    </section>
+
+  </main>
+
+  <footer>© <span id="y"></span> Matilda Stokes</footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Light up the film strip frame by frame when it scrolls into view
+    const strip = document.getElementById('strip');
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { strip.classList.add('lit'); obs.disconnect(); } });
+      }, { threshold: 0.4 }).observe(strip);
+    } else {
+      strip.classList.add('lit');
+    }
+  </script>
+</body>
+</html>
